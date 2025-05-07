@@ -77,7 +77,6 @@ class DVrouter(Router):
             #   broadcast the distance vector of this router to neighbors
             content = json.loads(packet.content)
             changed = False
-            print(packet.src_addr,packet.dst_addr,content)
             for dest, info in content.items():
                 if info["cost"] == self.infty and dest in self.rtable and self.rtable[dest]["nhop"] == packet.src_addr:
                     self.rtable[dest].update({
